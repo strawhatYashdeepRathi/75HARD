@@ -16,27 +16,25 @@
 
 from typing import List
 
-class meeting:
-    def __init__(self, start, end):
-        self.start = start
-        self.end = end
+# class meeting:
+#     def __init__(self, start, end):
+#         self.start = start
+#         self.end = end
 
 class Solution:
 
 
     def maxMeetings(self, s: List[int], e: List[int], n: int) -> None:
-        hashh = [meeting(s[i], e[i]) for i in range(n)]
-        hashh.sort(key=lambda x: x.end)
+        hashh = [(s[i], e[i]) for i in range(n)]
+        hashh.sort(key=lambda x: x[1])
         count = 1
-        last = hashh[0].end
+        last = hashh[0][1]
         for i in range(1, n):
-            print(hashh[i].start, hashh[i].end, count, last)
-            if hashh[i].start >= last:
+            if hashh[i][0] > last:
                 count+=1
-                last = hashh[i].end
+                last = hashh[i][1]
             
-        print(count)
-        return
+        return count
 
 
 if __name__ == "__main__":
@@ -44,4 +42,4 @@ if __name__ == "__main__":
     n = 8
     start = [75250, 50074, 43659, 8931, 11273, 27545, 50879, 77924]
     end = [112960, 114515, 81825, 93424, 54316, 35533, 73383, 160252]
-    obj.maxMeetings(start, end, n)
+    print(obj.maxMeetings(start, end, n))
