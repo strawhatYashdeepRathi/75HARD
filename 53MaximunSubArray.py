@@ -41,3 +41,26 @@ arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 n = len(arr)
 maxSum = maxSubarraySum(arr, n)
 print("The maximum subarray sum is:", maxSum)
+
+
+#  JS code 
+
+# /**
+#  * @param {number[]} nums
+#  * @return {number}
+#  */
+# var maxSubArray = function(nums) {
+#     let maxi = Number(-Infinity);
+#     let stn = 0;
+#     for(let i = 0; i< nums.length; i++){
+#         stn = stn + nums[i];
+#         if(stn > maxi){
+#             maxi = stn;
+#         }
+#         if(stn < 0){
+#             stn = 0
+#         }
+#     }
+#     return Number(maxi)
+    
+# };
